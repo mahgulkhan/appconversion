@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -62,6 +62,7 @@ namespace App
         }
         int uchoice1()
         {
+            Console.Clear();
             Console.WriteLine("ADD STOCK");
             int numofitems;
             Console.Write("Enter the number of items you want to enter:");
@@ -70,11 +71,14 @@ namespace App
             {
 
                 Console.Write( "Enter name of item : ");
-                stock[i] = Console.ReadLine();
+                string name=Console.ReadLine();
+                stock.Add(name);
                 Console.Write("Enter quantity: ");
-                stckquant[i] = int.Parse(Console.ReadLine());
+                int price = int.Parse(Console.ReadLine());
+                stckprice.Add(price);
                 Console.Write("Enter price: ");
-                stckprice[i] = int.Parse(Console.ReadLine());
+                int quant = int.Parse(Console.ReadLine());
+                stckquant.Add(quant);
 
             }
             Console.Write("1-Go to main menu \n2-Exit application");
@@ -96,9 +100,9 @@ namespace App
             Console.Clear();
             Console.WriteLine("VIEW ADDED ART STOCK");
             Console.WriteLine("NAME\t\t\t\tQUANTITY\tPRICE(per item)");
-            for (int i = 0; stock[i] != "\0"; i++)
+            for (int i = 0; i<stock.Count; i++)
             {
-                Console.WriteLine( stock[i] + "\t\t\t\t" + stckquant[i] + "\t\t" + stckprice[i] ;
+                Console.WriteLine( stock[i] + "\t\t\t\t" + stckquant[i] + "\t\t" + stckprice[i] );
             }
             Console.WriteLine(" ") ;
             Console.WriteLine("1-Go to main menu \n2-Exit application") ;
@@ -118,28 +122,26 @@ namespace App
         {
             Console.Clear() ;
             string todel ;
-            int updated=0;
+            int index,updated=0;
             Console.WriteLine( "REMOVE STOCK");
             Console.Write("Enter the name of the item you want to remove: ");
             todel = Console.ReadLine();
-            for (int i = 0; i < 100; i++)
+            if (stock.Contains(todel))
             {
-                if (stock[i] == todel)
+                index = stock.IndexOf(todel);
+                stock.RemoveAt(index);
+                stckprice.RemoveAt(index);
+                stckquant.RemoveAt(index);
+                Console.WriteLine("The selected item has been deleted.");
+                Console.WriteLine("1-Go to main menu. \nEnter 0 to Exit applictaion.");
+                updated = int.Parse(Console.ReadLine());
+                if (updated == 1)
                 {
-                    stock[i] = " ";
-                    stckprice[i] = 0;
-                    stckquant[i] = 0;
-                    Console.WriteLine( "The selected item has been deleted.");
-                    Console.WriteLine( "1-Go to main menu. \nEnter 0 to Exit applictaion." );
-                    updated= int.Parse(Console.ReadLine());
-                    if (updated == 1)
-                    {
-                        uselectedopt();
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    uselectedopt();
+                }
+                else
+                {
+                    return 0;
                 }
             }
             Console.Write("The selected item is not found in available stock.");
@@ -154,10 +156,8 @@ namespace App
             Console.WriteLine( "TRACE ANY ITEM FROM STOCK" );
             Console.Write("Enter the name of the item you want to trace: ");
             toupdate= Console.ReadLine();
-            for (int i = 0; i < 100; i++)
+            if (stock.Contains(toupdate))
             {
-                if (stock[i] == toupdate)
-                {
                     Console.WriteLine( "The selected item is present." );
                     Console.WriteLine( "1-Go to main menu. \nEnter 0 to Exit applictaion." );
                     updated= int.Parse(Console.ReadLine());
@@ -169,7 +169,6 @@ namespace App
                     {
                         return 0;
                     }
-                }
             }
             Console.Write("The selected item is not found in available stock.");
             return updated;
@@ -177,33 +176,32 @@ namespace App
 
         int uchoice5()
         {
+            Console.Clear();
             string todel;
             int newprice, newquant;
             int updated =0 ;
             Console.WriteLine("UPDATE STOCK" );
             Console.Write("Enter the name of the item you want to update: ");
             todel= Console.ReadLine();
-            Console.Write("Enter the new quantity: ");
-            newquant = int.Parse(Console.ReadLine()); ;
-            Console.Write("Enter the new price: ");
-            newprice= int.Parse(Console.ReadLine());
-            for (int i = 0; i < 100; i++)
+            if (stock.Contains(todel))
             {
-                if (stock[i] == todel)
+                stock.IndexOf(todel);
+                Console.Write("Enter the new quantity: ");
+                newquant = int.Parse(Console.ReadLine()); ;
+                Console.Write("Enter the new price: ");
+                newprice = int.Parse(Console.ReadLine());
+                stckprice.Add(newprice);
+                stckquant.Add(newquant);
+                Console.WriteLine("The selected item has been updated.");
+                Console.WriteLine("1-Go to main menu. \nEnter 0 to Exit applictaion.");
+                updated = int.Parse(Console.ReadLine());
+                if (updated == 1)
                 {
-                    stckprice[i] = newprice;
-                    stckquant[i] = newquant;
-                    Console.WriteLine( "The selected item has been updated." )
-                    Console.WriteLine("1-Go to main menu. \nEnter 0 to Exit applictaion." );
-                    updated = int.Parse(Console.ReadLine()); ;
-                    if (updated == 1)
-                    {
-                        uselectedopt();
-                    }
-                    else
-                    {
-                        return 0 ;
-                    }
+                    uselectedopt();
+                }
+                else
+                {
+                    return 0;
                 }
             }
             Console.Write("The selected item is not found in available stock.");
