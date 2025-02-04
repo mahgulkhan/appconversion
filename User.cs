@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -68,12 +68,12 @@ namespace App
             Console.Clear ();
             int apply;
             Console.WriteLine("APPLY FOR MEMBERSHIP CARD");
-            Console.WriteLine("Press 1 to apply");
-            Console.WriteLine("Press 0 to go back to main menu.");
+            Console.WriteLine("Press 0 to apply");
+            Console.WriteLine("Press 1 to go back to main menu.");
             Console.WriteLine("Press 2 to Exit application.");
             Console.Write("Entered option: ");
             apply = int.Parse(Console.ReadLine());
-            if (apply == 1)
+            if (apply == 0)
             {
                 Console.WriteLine("Thank you for applying for our membership card. You will receive it soon :)");
                 Console.WriteLine("Press any key to go to the main menu.");
@@ -81,7 +81,7 @@ namespace App
                 Console.Read();
                 selectedopt();
             }
-            else if (apply == 0)
+            else if (apply == 1)
             {
                 selectedopt();
             }
@@ -121,15 +121,17 @@ namespace App
             Console.Clear();
             string title, add, method;
             Console.WriteLine("BUY ART-WORK.");
-            Console.Write("Enter painting title(must be a single title): ");
+            Console.Write("Enter Painting title(must be a single title): ");
             title = Console.ReadLine();
-            Console.Write( "Enter adress: ");
+            Console.Write( "Enter Address: ");
             add = Console.ReadLine();
-            Console.Write("Enter payment method :");
+            Console.Write("Enter payment method: ");
             method = Console.ReadLine();
+            Console.WriteLine(" ");
             Console.WriteLine("Your order has been placed succesfully!");
             int option;
             Console.WriteLine("1-Go to main menu \n2-Exit application");
+            Console.Write("Entered option: ");
             option = int.Parse(Console.ReadLine());
             if (option == 1)
             {
@@ -149,15 +151,17 @@ namespace App
             Console.WriteLine("BUY ART SUPPLIES");
             Console.Write("Enter Product name:");
             title = Console.ReadLine();
-            Console.Write("Enter quantity: ");
+            Console.Write("Enter Quantity: ");
             quant = Console.ReadLine();
-            Console.Write("Enter adress: ");
+            Console.Write("Enter Address: ");
             add = Console.ReadLine();
-            Console.Write("Enter payment method :");
+            Console.Write("Enter Payment method :");
             method = Console.ReadLine();
+            Console.WriteLine(" ");
             Console.WriteLine("Your order has been placed succesfully!");
             int option;
             Console.WriteLine("1-Go to main menu \n2-Exit application");
+            Console.Write("Entered option: ");
             option = int.Parse(Console.ReadLine());
             if (option == 1)
             {
