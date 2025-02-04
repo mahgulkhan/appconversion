@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -176,8 +176,6 @@ namespace App
                         if (usr == names[x] && key == int.Parse(passwords[x]))
                         {
                             Console.WriteLine("");
-                            Console.WriteLine("Press any key to continue.");
-                            Console.Read();
                             Identity();
                         }
                     }
